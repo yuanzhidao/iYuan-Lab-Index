@@ -57,6 +57,11 @@ function checkMode(){
         boolSystemMode.value = true;
         boolDarkMode.value = false;
         boolLightMode.value = false;
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
     }else if(localStorage.theme == 'dark'){
         boolSystemMode.value = false;
         boolDarkMode.value = true;
@@ -83,11 +88,6 @@ function turnLightMode() {
 function turnSysMode(){
     localStorage.clear();
     checkMode();
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.documentElement.classList.add('dark')
-    } else {
-        document.documentElement.classList.remove('dark')
-    }
 }
 
 checkMode();
