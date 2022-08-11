@@ -50,14 +50,19 @@
 
         </transition>
     </Popover>
+
+    <Dialog :content=dialogContent :isOpen=dialogIsOpen />
 </template>
 
 <script setup>
+import Dialog from './Dialog.vue';
 import { ref } from 'vue';
 
 const boolDarkMode = ref(false);
 const boolLightMode = ref(false);
 const boolSystemMode = ref(false);
+const dialogContent = ref('');
+const dialogIsOpen = ref(false);
 
 function checkMode() {
     if (localStorage.theme == undefined) {
@@ -80,6 +85,8 @@ function checkMode() {
         addDarkListen(window.matchMedia('(prefers-color-scheme: dark)'));
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener("change", (e)=>{
             addDarkListen(e);
+            dialogContent.value = '检测到您已切换系统主题，已为您更换为 跟随系统。';
+            dialogIsOpen.value = true;
         })
     } else if (localStorage.theme == 'dark') {
         boolSystemMode.value = false;
