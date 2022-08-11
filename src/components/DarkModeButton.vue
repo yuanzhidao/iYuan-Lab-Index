@@ -67,8 +67,14 @@ function checkMode() {
         function addDarkListen (event) {
             if (event.matches) {
                 document.documentElement.classList.add('dark');
+                boolSystemMode.value = true;
+                boolDarkMode.value = false;
+                boolLightMode.value = false;
             } else {
                 document.documentElement.classList.remove('dark');
+                boolSystemMode.value = true;
+                boolDarkMode.value = false;
+                boolLightMode.value = false;
             }
         }
         addDarkListen(window.matchMedia('(prefers-color-scheme: dark)'));
@@ -80,13 +86,11 @@ function checkMode() {
         boolDarkMode.value = true;
         boolLightMode.value = false;
         document.documentElement.classList.add('dark');
-        window.matchMedia('(prefers-color-scheme: dark)').removeEventListener(()=>{})
     } else if (localStorage.theme == 'light') {
         boolSystemMode.value = false;
         boolDarkMode.value = false;
         boolLightMode.value = true;
         document.documentElement.classList.remove('dark');
-        window.matchMedia('(prefers-color-scheme: dark)').removeEventListener(()=>{})
     }
 }
 
