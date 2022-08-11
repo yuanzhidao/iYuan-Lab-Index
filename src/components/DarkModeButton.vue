@@ -64,12 +64,16 @@ function checkMode() {
         boolSystemMode.value = true;
         boolDarkMode.value = false;
         boolLightMode.value = false;
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener("change", function (event) {
+        function addDarkListen (event) {
             if (event.matches) {
                 document.documentElement.classList.add('dark');
             } else {
                 document.documentElement.classList.remove('dark')
             }
+        }
+        addDarkListen(window.matchMedia('(prefers-color-scheme: dark)'));
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener("change", (e)=>{
+            addDarkListen(e);
         })
     } else if (localStorage.theme == 'dark') {
         boolSystemMode.value = false;
