@@ -54,7 +54,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import {
   TransitionRoot,
   TransitionChild,
@@ -62,15 +62,22 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@headlessui/vue'
+const props = defineProps(['content','isOpen'])
 
-const props = defineProps({
-    content: String,
-    isOpen: Boolean,
+const isOpen = ref();
+
+const upIsOpen = computed({
+  get(){
+    return props.isOpen;
+  },
+  set(value){
+    isOpen.value = value;
+  }
 })
 
-const isOpen = ref(props.isOpen)
+isOpen.value = upIsOpen.value;
 
 function closeModal() {
-  isOpen.value = false
+    upIsOpen.value = false;
 }
 </script>

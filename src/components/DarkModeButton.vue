@@ -51,7 +51,7 @@
         </transition>
     </Popover>
 
-    <Dialog :content=dialogContent :isOpen=dialogIsOpen />
+    <!-- <Dialog :content=dialogContent :isOpen=dialogIsOpen /> -->
 </template>
 
 <script setup>
