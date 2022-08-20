@@ -11,7 +11,7 @@
                         </svg>
                     </span>
                     <p class="ml-3 font-medium text-white truncate">
-                        <span class="inline"> 域名备案中，预计 1-2 周恢复。 </span>
+                        <span class="inline"> 备案寄了，被管局打回了（悲）。 </span>
                     </p>
                 </div>
             </div>
